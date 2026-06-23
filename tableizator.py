@@ -20,12 +20,8 @@ def tableize(headings:List[str], data:List) -> None:
 
 def __calc_col_widths(headings:List[str], data:List) -> Tuple[int]:
 
-    widths = []
-
-    # add widths of headings    
-    for heading in headings:
-
-        widths.append(len(heading))
+    # get heading widths
+    widths = [len(heading) for heading in headings]
 
     # overwrite current widths with data widths if longer
     for row in data:
@@ -55,7 +51,7 @@ def __create_border_strings(col_widths:Tuple[int]) -> Dict[str, str]:
         data_top_border.append("─" * width)
         data_bottom_border.append("─" * width)
 
-        # intermediate border interesctions
+        # intermediate border intersections
         if index < len(col_widths) - 1:
             heading_top_border.append("╤")
             heading_bottom_border.append("╪")
